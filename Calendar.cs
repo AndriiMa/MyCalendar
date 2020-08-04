@@ -14,17 +14,38 @@ namespace calendar
             this.dateNow = DateTime.Now;
         }
 
-        public void drawDaysOfWeek()
+        public Calendar(int month)
+        {
+            this.dateNow = new DateTime(DateTime.Now.Year, month, 1);
+        }
+
+        public Calendar(int month, int year)
+        {
+            this.dateNow = new DateTime(year, month, 1);
+        }
+
+        public void drawCalendar()
+        {
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            drawHeader();
+            drawDaysOfWeek();
+            drawDays();
+        }
+
+        private void drawDaysOfWeek()
         {
             Console.WriteLine("Su\tMo\tTu\tWe\tTh\tFr\tSa\t");
         }
 
-        public void drawHeader()
+        private void drawHeader()
         {
             Console.WriteLine(dateNow.ToString("MMMM") + wordDelimiter + dateNow.ToString("yyyy"));
         }
 
-        public void drawDays()
+        private void drawDays()
         {
             DateTime firsDateOfMonth = new DateTime(dateNow.Year, dateNow.Month, 1);
             int daysInMonth = DateTime.DaysInMonth(dateNow.Year, dateNow.Month);
@@ -34,7 +55,7 @@ namespace calendar
 
             Console.WriteLine();
             addTabs(tabs);
-            
+
             int counter = tabs;
             for (var dt = firsDateOfMonth; dt <= lastDateInMonth; dt.AddDays(1))
             {
@@ -74,7 +95,6 @@ namespace calendar
 
         private void addTabs(int tabs)
         {
-
             String result = "";
 
             for (int i = 0; i < tabs; i++)
@@ -82,7 +102,6 @@ namespace calendar
                 result += wordDelimiter;
             }
             Console.Write(result);
-
         }
     }
 
