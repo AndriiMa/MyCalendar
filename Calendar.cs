@@ -36,7 +36,7 @@ namespace calendar
             addTabs(tabs);
             
             int counter = tabs;
-            for (var dt = firsDateOfMonth; dt != lastDateInMonth; dt.AddDays(1))
+            for (var dt = firsDateOfMonth; dt <= lastDateInMonth; dt.AddDays(1))
             {
 
                 changeColour(dt);
